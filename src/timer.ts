@@ -20,8 +20,9 @@ export function startTimer(
     onTickCb?.(remaining);
 
     if (remaining <= 0) {
+      const expire = onExpireCb;
       stopTimer();
-      onExpireCb?.();
+      expire?.();
     } else {
       timerId = requestAnimationFrame(tick);
     }

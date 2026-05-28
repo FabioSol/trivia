@@ -67,15 +67,22 @@ export interface Manifest {
 // Board index: category → points → list of page URLs
 export type BoardIndex = Map<string, Map<number, string[]>>;
 
-// Neon colors for categories
-export const CATEGORY_COLORS: Record<string, string> = {
-  history: "cyan",
-  science: "pink",
-  geography: "yellow",
-  "pop-culture": "green",
-  technology: "purple",
-};
+// Neon color palette — assigned to categories dynamically at init
+export const COLOR_PALETTE = ["cyan", "pink", "yellow", "green", "purple"];
+
+let categoryColorMap = new Map<string, string>();
+
+export function assignCategoryColors(categories: string[]): void {
+  categoryColorMap = new Map();
+  categories.forEach((cat, i) => {
+    categoryColorMap.set(cat, COLOR_PALETTE[i % COLOR_PALETTE.length]);
+  });
+}
 
 export function categoryColor(cat: string): string {
-  return CATEGORY_COLORS[cat] ?? "cyan";
+  return categoryColorMap.get(cat) ?? COLOR_PALETTE[0];
+}
+
+export function playerColor(playerIndex: number): string {
+  return COLOR_PALETTE[playerIndex % COLOR_PALETTE.length];
 }

@@ -1,5 +1,5 @@
 import type { GameState, QuestionData, Player, BoardIndex } from "./types";
-import { categoryColor, CATEGORY_COLORS } from "./types";
+import { categoryColor, playerColor } from "./types";
 import { getCategories, getPointLevels, isCellExhausted } from "./board";
 
 const colorClasses: Record<string, { bg: string; border: string; text: string; glow: string; accent: string }> = {
@@ -48,7 +48,8 @@ export function renderLobby(
     playerList.innerHTML = "";
     players.forEach((name, i) => {
       const row = el("div", "flex items-center gap-2");
-      const badge = el("span", `px-3 py-1.5 rounded-lg ${cc(Object.keys(CATEGORY_COLORS)[i % 5]).bg} ${cc(Object.keys(CATEGORY_COLORS)[i % 5]).text} font-medium flex-1`, name);
+      const pc = colorClasses[playerColor(i)];
+      const badge = el("span", `px-3 py-1.5 rounded-lg ${pc.bg} ${pc.text} font-medium flex-1`, name);
       const removeBtn = el("button", "text-slate-500 hover:text-red-400 text-xl leading-none", "×");
       removeBtn.onclick = () => { players.splice(i, 1); renderPlayers(); };
       row.append(badge, removeBtn);
@@ -150,7 +151,7 @@ export function renderBoard(
   // Scores
   const scores = el("div", "flex gap-3 mb-6 justify-center flex-wrap");
   state.players.forEach((p, i) => {
-    const color = Object.values(CATEGORY_COLORS)[i % 5];
+    const color = playerColor(i);
     const cls = i === state.currentPlayerIndex ? `${colorClasses[color].border} ${colorClasses[color].text}` : "border-slate-700 text-slate-400";
     const pill = el("div", `px-3 py-1 rounded-full border text-sm font-mono ${cls}`, `${p.name}: ${p.score}`);
     scores.append(pill);
@@ -322,8 +323,7 @@ export function renderPass(
   onReady: () => void
 ): HTMLElement {
   const root = el("div", "w-full max-w-md mx-auto p-6 text-center");
-  const color = Object.values(CATEGORY_COLORS)[playerIndex % 5];
-  const c = colorClasses[color];
+  const c = colorClasses[playerColor(playerIndex)];
 
   const label = el("p", "text-slate-400 text-lg mb-4", "Pass the phone to");
   const name = el("h2", `text-5xl font-black mb-8 ${c.text}`, nextPlayer.name);

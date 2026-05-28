@@ -1,7 +1,8 @@
 import "./style.css";
 import type { GameState, BoardIndex } from "./types";
+import { assignCategoryColors } from "./types";
 import { defaultState, saveState, loadState, clearState, resetScores } from "./state";
-import { loadManifest, buildBoardIndex, pickRandomQuestion } from "./board";
+import { loadManifest, buildBoardIndex, getCategories, pickRandomQuestion } from "./board";
 import { fetchQuestion, preloadQuestion } from "./question";
 import { startTimer, stopTimer, getElapsedMs } from "./timer";
 import { renderLobby, renderBoard, renderQuestion, renderReveal, renderPass, renderGameOver } from "./ui";
@@ -15,6 +16,7 @@ if (!app) throw new Error("No #app element");
 async function init() {
   const manifest = await loadManifest();
   boardIndex = buildBoardIndex(manifest);
+  assignCategoryColors(getCategories(boardIndex));
 
   const saved = loadState();
   if (saved && saved.screen !== "lobby") {

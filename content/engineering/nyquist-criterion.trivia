@@ -1,0 +1,11 @@
+---
+title: Nyquist Stability Criterion
+category: engineering
+points: 40
+layout: question
+---
+? In control systems engineering, what does the Nyquist stability criterion use to determine the stability of a feedback system?
+[A] The step response overshoot percentage
+[B]* The number of encirclements of the critical point in the complex plane
+[C] The root mean square of the system transfer function
+[D] The phase margin measured at the unity gain crossover frequency

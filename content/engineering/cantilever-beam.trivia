@@ -1,0 +1,11 @@
+---
+title: Cantilever Beam
+category: engineering
+points: 20
+layout: question
+---
+? In structural engineering, what defines a cantilever beam?
+[A] It is supported at both ends with a load in the middle
+[B] It rests freely on two supports without being fixed
+[C] It is a curved beam that distributes load in an arc
+[D]* It is fixed at one end and free at the other

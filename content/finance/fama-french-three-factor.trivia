@@ -1,0 +1,11 @@
+---
+title: Fama-French Three-Factor Model
+category: finance
+points: 40
+layout: question
+---
+? Which of the following is NOT one of the three factors in the Fama-French three-factor model?
+[A] Market risk premium
+[B]* Momentum
+[C] Size (SMB)
+[D] Value (HML)

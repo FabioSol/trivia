@@ -1,0 +1,11 @@
+---
+title: Perfect Bowling Score
+category: sports
+points: 40
+layout: question
+---
+? In ten-pin bowling, how many consecutive strikes are needed to bowl a perfect game of 300?
+[A] 10
+[B] 11
+[C]* 12
+[D] 13

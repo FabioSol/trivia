@@ -5,7 +5,10 @@ const cache = new Map<string, QuestionData>();
 export async function fetchQuestion(url: string): Promise<QuestionData> {
   if (cache.has(url)) return cache.get(url)!;
 
-  const res = await fetch(url);
+  // Manifest URLs are absolute (e.g. /quiz/...). Strip leading / to make
+  // them relative so the <base href> tag resolves the correct path.
+  const fetchUrl = url.startsWith("/") ? url.slice(1) : url;
+  const res = await fetch(fetchUrl);
   const html = await res.text();
 
   const parser = new DOMParser();

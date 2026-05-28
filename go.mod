@@ -2,7 +2,7 @@ module trivia-night
 
 go 1.25.0
 
-require github.com/FabioSol/fuego v0.1.0
+require github.com/FabioSol/fuego v0.1.1
 
 require (
 	github.com/bmatcuk/doublestar/v4 v4.10.0 // indirect

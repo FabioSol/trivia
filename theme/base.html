@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-950 text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Page.Envelope.title}} — {{.Site.Name}}</title>
+    <base href="{{.Site.BaseURL}}/">
+    <link rel="stylesheet" href="assets/game.css">
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 font-sans">
+{{block "content" .}}<div>{{.Page.Content}}</div>{{end}}
+<script type="application/json" id="fuego-data">{{.JSON}}</script>
+<script type="module" src="assets/game.js"></script>
+</body>
+</html>

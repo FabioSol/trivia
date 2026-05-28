@@ -1,0 +1,41 @@
+site:
+  name: "Trivia Night"
+  base_url: ""
+
+parsers:
+  trivia:
+    rules:
+      - match: '^\?\s*(.+)$'
+        emit:
+          type: question
+          content: "$1"
+      - match: '^\[([A-Z])\]\*\s+(.+)$'
+        emit:
+          type: answer
+          content: "$2"
+          attributes:
+            letter: "$1"
+            correct: "true"
+      - match: '^\[([A-Z])\]\s+(.+)$'
+        emit:
+          type: answer
+          content: "$2"
+          attributes:
+            letter: "$1"
+            correct: "false"
+
+routes:
+  trivia: "/quiz/{dir}/{slug}"
+
+taxonomies:
+  category:
+    path: "/category/{term}"
+    layout: "category"
+    index_path: "/categories"
+    index_layout: "category-index"
+
+prebuild: "npx vite build"
+
+dev:
+  port: 8080
+  command: "npx vite build --watch"

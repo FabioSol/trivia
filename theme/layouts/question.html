@@ -1,0 +1,9 @@
+{{define "content"}}
+<div class="max-w-2xl mx-auto p-8">
+    <h1 class="text-2xl font-bold mb-4">{{.Page.Envelope.title}}</h1>
+    <div class="text-sm text-slate-400 mb-6">
+        {{.Page.Envelope.category}} · {{.Page.Envelope.points}} pts
+    </div>
+    <div>{{.Page.Content}}</div>
+</div>
+{{end}}

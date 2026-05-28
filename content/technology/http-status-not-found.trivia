@@ -1,0 +1,11 @@
+---
+title: HTTP Status Code for Not Found
+category: technology
+points: 20
+layout: question
+---
+? What HTTP status code indicates that a requested resource was not found on the server?
+[A] 401
+[B] 500
+[C]* 404
+[D] 302

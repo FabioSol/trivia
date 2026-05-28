@@ -1,0 +1,11 @@
+---
+title: Self-Reproducing Program
+category: technology
+points: 40
+layout: question
+---
+? In computer science, what is the term for a program that produces its own source code as its output?
+[A] Ouroboros
+[B] Eigenprogramm
+[C] Fixed-point combinator
+[D]* Quine
